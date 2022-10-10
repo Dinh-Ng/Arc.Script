@@ -7,35 +7,35 @@ local state = {on = '[ ON ] ', off = '[  OFF ] '}
 -- Menu
 function main()     --- main menu
 	menu = gg.choice({
-	"✡️Menu Hack khác🚻", --1
-	"✡️Menu Rớt Đồ📥📥📥",--2
-	"✡️Rớt loại đồ cần 🏹🛡",--3
-	"✡️Nhân số lượng drop🏧🔢",--4
-	"✡️Teleport🚧🚧🚧",--5
-	-- "✡️Đổi sang skill xuyên tường🏃‍♂️🏃‍♂️🏃‍♂️",--6
-	"✡️Nhảy 1 ngày⚡🔋",--7
-	"✡️Menu Rớt Trứng🐣🐣🐣",--8
-	"✡️Menu Ấp Trứng🐓🐓🐓",--9
-	"✡️Rớt tối đa loại đồ trong 1 trận💎",--10
-	"✡️Mở khóa Event (giả lập)🏧",--11
-	"✡️Thay đổi số tiền 💰💰💰",--12
-	"✡️Hack năng lượng (giả lập)⚡",--13
-	"✡️Exit❌"--14
+	"✡️ Monster Treasure 20 - 20",           --1
+	"✡️ Menu Rớt Đồ📥📥📥",                  --2
+	"✡️ Rớt loại đồ cần 🏹🛡",               --3
+	"✡️ Nhân số lượng drop🏧🔢",             --4
+	"✡️ Teleport🚧🚧🚧",                     --5
+	"✡️ Nhảy 1 ngày⚡🔋",                     --6
+	"✡️ Menu Rớt Trứng🐣🐣🐣",               --7
+	"✡️ Menu Ấp Trứng🐓🐓🐓",                --8
+	"✡️ Rớt tối đa loại đồ trong 1 trận💎",  --9
+	"✡️ Mở khóa Event (giả lập)🏧",          --10
+  "✡️ Hach vàng 💰💰💰",                   --11
+	"✡️ Thay đổi số tiền 💰💰💰",            --12
+	"✡️ Hack năng lượng (giả lập)⚡",         --13
+	"✡️ Exit❌"                              --14
 	}, nil, "🙉🙉🙉 Archero🎯 For friend only 🙉🙉🙉")
-	if menu == 1   	then 	menuoth()		end
+	if menu == 1  then 	gig()		end
 	if menu == 2	then 	menudrop()  	end
-	if menu == 3   	then 	dropmeq()		end
+	if menu == 3  then 	dropmeq()		end
 	if menu == 4	then 	multi()  		end
 	if menu == 5 	then 	telesand()  	end
-	-- if menu == 6 	then 	SwapThroughWall()   	end
 	if menu == 6 	then 	etenegry() 		end
 	if menu == 7 	then 	menuegg()  		end
 	if menu == 8 	then 	mhegg()   		end
 	if menu == 9 	then 	multinm()  		end
 	if menu == 10 	then 	event()  		end
-	if menu == 11 	then 	golmax()   		end
-	if menu == 12 	then 	engery()   		end
-	if menu == 13 	then 	os.exit()	end
+  if menu == 11 then golact() end
+	if menu == 12 	then 	golmax()   		end
+	if menu == 13 	then 	engery()   		end
+	if menu == 14 	then 	os.exit()	end
 end
 
 function menudrop() --- infi drop sub menu
@@ -89,20 +89,6 @@ function mhegg()
   if menuhegg == 2 then    eggb()   end
   if menuhegg == 3 then    main()   end
 end
-function menuoth()
-  menuother = gg.choice({
-    "✡️Đổi skill (InGame)☯️",
-    "✡️Đổi hết sang đồ đỏ👑",
-	-- "✡️Chiến P (🦏 vs 🐊)",
-    "✡️Back↩️"
-  }, nil, "⚜⚜⚜ other hack ⚜⚜⚜")
-  if menuother == 1   	then 		skin() 			end
-  if menuother == 2   	then 		deck()  		end
-  -- if menuother == 3   	then 		MSTbattle()  	end
-  if menuother == 3 	then    	main()  		end
-
-end
-
 
 --- Drop fuction
 function dropmym() --- multi drop Mystery mine
@@ -180,45 +166,10 @@ function dropmym() --- multi drop Mystery mine
 	dropmotj()
 	dropofic()
 end
-function dropOffIfi() --- Turn off inf for equip
-	gg.clearResults()
-	t = gg.getListItems()
-	gg.loadResults(t)
-	gg.refineNumber("999999999", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-	revert = gg.getResults(1, nil, nil, nil, nil, nil, nil, nil, nil)
-	if gg.getResultsCount() < 1 then
-      gg.alert("⚠️Couldn't activate this hack at the moment!♨️ ...\n\nℹTry again or restart the game😪")
-    else
-		r = gg.getResults(1)
-		if stateEquip == off then
-			r = gg.getResults(1)
-			local t = {}
-			t[1] = {}
-			t[1].address = r[1].address - 32
-			t[1].flags = gg.TYPE_DWORD
-			t[1].value = 0
-			t[1].freeze = false
-			gg.addListItems(t)
-			gg.setValues(t)
-			gg.toast("%s ℹSuccess turn off equip infi📥")
-			else
-			r = gg.getResults(1)
-			local t = {}
-			t[1] = {}
-			t[1].address = r[1].address - 32
-			t[1].flags = gg.TYPE_DWORD
-			t[1].value = -1
-			t[1].freeze = true
-			gg.addListItems(t)
-			gg.setValues(t)
-			gg.toast("%s ℹSuccess turn off equip infi📥")
-		end
-	end
-end
 function dropinf()  --- inf drop
 		gg.clearResults()
 		gg.setRanges(gg.REGION_ANONYMOUS)
-		gg.searchNumber("180~215;21774~36000Q;61101~63301::85", gg.TYPE_DWORD)
+		gg.searchNumber("218~230;29989~48753Q;61101~63301::85", gg.TYPE_DWORD)
 		local results = gg.getResults(gg.getResultsCount())
 		for i, v in ipairs(results) do
 		  if v.value % 10 ~= 1 then
@@ -579,7 +530,7 @@ function droperg()  --- drop 1 type scroll itemsScroll
   end
   gg.clearResults()
   gg.setRanges(gg.REGION_ANONYMOUS)
-  gg.searchNumber("116~200;156~1000;30101~30107;1::105", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+  gg.searchNumber("148~202;188~1133Q;30101~30107::85", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
   gg.refineNumber("30101~30107", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
   revert = gg.getResults(50, nil, nil, nil, nil, nil, nil, nil, nil)
   if gg.getResultsCount() < 1 then
@@ -762,17 +713,17 @@ function degg()      --- Disable egg drop
   gg.toast("🔌Drop Eggs Deactivated✅!...")
   gg.clearResults()
 end
-function eggc()
+function eggc()      --- Hatch Eggs: Common
   gg.clearResults()
   local item = gg.choice(map(itemshnegg, function(item)
     return item.name
-  end), nil, "ℹ Which Boss Egg you want to add for hatching 🥔")
+  end), nil, "ℹ Which common Egg you want to add for hatching 🥚")
   if item == nil then
     return
   end
   local config = loadConfig()
   local x = gg.prompt({
-    string.format("ℹHow many eggs of common creatures do you want to add to the hatch🥔")
+    string.format("ℹHow many eggs of common creatures do you want to add to the hatch🥚")
   }, config.eggbCF or {}, {"number"})
   if x == nil then
     return
@@ -792,7 +743,7 @@ function eggc()
 
   end
 end
-function eggb()
+function eggb()      --- Hatch Eggs: Boss
   gg.clearResults()
   local item = gg.choice(map(itemshbossegg, function(item)
     return item.name
@@ -824,10 +775,9 @@ function eggb()
   end
 end
 
-
 ---multi fuction
 
-function multinm()  --- multi drop normal map
+function multinm()  --- Max drop chap 32(?)
   gg.clearResults()
   local config = loadConfig()
   local values = gg.prompt({
@@ -891,67 +841,6 @@ function multi()    --- Multi drop items
   end
 end
 
-function skin()     --- swap skill itemsSpec6
-  local itemType = gg.choice({
-    "✡️Hero Skin 🛐",
-    "✡️Specials Abilities ♒",
-    "✡️rrow Abilities ♈",
-    "✡️Circle Abilities ♋",
-    "✡️Spirit Abilities ☯️",
-    "✡️Explosive Abilities 🌋",
-    "✡️Attack Boost Abilities ♐",
-    "✡️Health Dependent Abilities ♥️",
-    "✡️Other Abilities ✡",
-    "✡️Not available yet Abilities ☮"
-  }, nil, "ℹ Choose a skill type 🔀\n")
-  if itemType == nil then
-    return
-  end
-  local item = gg.choice(map(itemsSpec6[itemType], function(item)
-    return item.name
-  end), nil, "ℹ Qwhich skill do you want to select? ♋\n")
-  if item == nil then
-    return
-  end
-  t = gg.getListItems()
-  gg.loadResults(t)
-  gg.refineNumber("1000001~1000200", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-  revert = gg.getResults(30, nil, nil, nil, nil, nil, nil, nil, nil)
-  gg.editAll(itemsSpec6[itemType][item].id, gg.TYPE_DWORD)
-  if gg.getResultsCount() > 1 then
-    gg.toast(string.format("%s ℹSkill Selected Success\226\153\139", itemsSpec6[itemType][item].name), true)
-    gg.clearResults()
-  elseif gg.getResultsCount() < 1 then
-    gg.setRanges(gg.REGION_ANONYMOUS)
-    gg.searchNumber("1000001~1000200;1Q;3;0~2Q::77", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 30)
-    gg.refineNumber("1000001~7000007", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-    revert = gg.getResults(30, nil, nil, nil, nil, nil, nil, nil, nil)
-    if gg.getResultsCount() < 1 then
-      gg.clearResults()
-      gg.alert("⚠️Couldn't activate this hack at the moment!♨️ ...\n\nℹTry again or restart the game😪")
-    else
-      local t = gg.getResults(30, nil, nil, nil, nil, nil, nil, nil, nil)
-      for i, v in ipairs(t) do
-        local resultNumber = gg.getResultsCount()
-        if resultNumber % 1 == 0 then
-          local results = gg.getResults(30)
-          local newValues = {}
-          for index, result in ipairs(results) do
-            if index % 1 == 0 then
-              result.value = itemsSpec6[itemType][item].id
-              table.insert(newValues, result)
-            end
-          end
-          gg.setValues(newValues)
-          local t = gg.getResults(9, nil, nil, nil, nil, nil, nil, nil, nil)
-          t = nil
-          gg.toast(string.format("%s ℹSkill Selected Success♋", itemsSpec6[itemType][item].name), true)
-        end
-        gg.clearResults()
-      end
-    end
-  end
-end
 function etenegry() --- jumpt time
   gg.clearResults()
   gg.timeJump("1:0:0:1")
@@ -969,85 +858,6 @@ function gig()      --- Monster treasure
     revert = gg.getResults(100, nil, nil, nil, nil, nil, nil, nil, nil)
     gg.editAll("20", gg.TYPE_DWORD)
     gg.toast("ℹMax Monster Treasure Event Items")
-    gg.clearResults()
-  end
-end
-
-function deck()     --- change iteam to pvp
-  gg.clearResults()
-  gg.setRanges(gg.REGION_ANONYMOUS)
-  gg.searchNumber("6000000~8000000Q;1000000000~2300000000;1000000000~2300000000;1Q;1000000000~2300000000;1000000000~2300000000;1Q;1~3;0~8::53", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 81)
-  gg.refineNumber("1000000000~2300000000;1000000000~2300000000;1~3;0~8::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-  if gg.getResultsCount() < 1 then
-    gg.alert("⚠️Couldn't activate this hack at the moment!♨️ ...\n\nℹTry again or restart the game😪")
-  else
-    local t = gg.getResults(100, nil, nil, nil, nil, nil, nil, nil, nil)
-    gg.addListItems(t)
-    t = nil
-    t = gg.getListItems()
-    gg.loadResults(t)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000;1~3;0::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    revert = gg.getResults(4, nil, nil, nil, nil, nil, nil, nil, nil)
-    gg.editAll("1010808;0;120;0", gg.TYPE_DWORD)
-    gg.clearResults()
-    t = gg.getListItems()
-    gg.loadResults(t)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000;1~3;1::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    revert = gg.getResults(4, nil, nil, nil, nil, nil, nil, nil, nil)
-    gg.editAll("1020608;0;120;0", gg.TYPE_DWORD)
-    gg.clearResults()
-    t = gg.getListItems()
-    gg.loadResults(t)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000;1~3;2::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    revert = gg.getResults(4, nil, nil, nil, nil, nil, nil, nil, nil)
-    gg.editAll("1030608;0;120;0", gg.TYPE_DWORD)
-    gg.clearResults()
-    t = gg.getListItems()
-    gg.loadResults(t)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000;1~3;3::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    revert = gg.getResults(4, nil, nil, nil, nil, nil, nil, nil, nil)
-    gg.editAll("1030508;0;120;0", gg.TYPE_DWORD)
-    gg.clearResults()
-    t = gg.getListItems()
-    gg.loadResults(t)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000;1~3;4::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    revert = gg.getResults(4, nil, nil, nil, nil, nil, nil, nil, nil)
-    gg.editAll("1040608;0;120;0", gg.TYPE_DWORD)
-    gg.clearResults()
-    t = gg.getListItems()
-    gg.loadResults(t)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000;1~3;5::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    revert = gg.getResults(4, nil, nil, nil, nil, nil, nil, nil, nil)
-    gg.editAll("1040508;0;120;0", gg.TYPE_DWORD)
-    gg.clearResults()
-    t = gg.getListItems()
-    gg.loadResults(t)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000;1~3;6::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    revert = gg.getResults(4, nil, nil, nil, nil, nil, nil, nil, nil)
-    gg.editAll("1060608;0;120;0", gg.TYPE_DWORD)
-    gg.clearResults()
-    t = gg.getListItems()
-    gg.loadResults(t)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000;1~3;7::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    revert = gg.getResults(4, nil, nil, nil, nil, nil, nil, nil, nil)
-    gg.editAll("1050608;0;120;0", gg.TYPE_DWORD)
-    gg.clearResults()
-    t = gg.getListItems()
-    gg.loadResults(t)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000;1~3;8::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.refineNumber("1000000000~2300000000;1000000000~2300000000::45", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    revert = gg.getResults(4, nil, nil, nil, nil, nil, nil, nil, nil)
-    gg.editAll("1070608;0;120;0", gg.TYPE_DWORD)
-    gg.toast("ℹSuccess... 🧮Deck Master Místico Full Transformado👑")
-    gg.clearList(t)
     gg.clearResults()
   end
 end
@@ -2037,6 +1847,10 @@ itemsSpec3 = {    -- items id
     {
       id = 1020601,
       name = "🧥Dark Cloak"
+    },
+    {
+      id = 1020701,
+      name = "🧥New Cloak"
     }
   },
   {
@@ -2063,6 +1877,14 @@ itemsSpec3 = {    -- items id
     {
       id = 1030601,
       name = "🦁Ring of the Lion"
+    },
+    {
+      id = 1030701,
+      name = "🦁Ring of the ???"
+    },
+    {
+      id = 1030801,
+      name = "🦁Ring of the ???"
     }
   },
   {
@@ -2086,6 +1908,10 @@ itemsSpec3 = {    -- items id
     {
       id = 1040601,
       name = "🦉Noisy Owl"
+    },
+    {
+      id = 1040601,
+      name = "💀Skeleton"
     }
   },
   {
@@ -2112,6 +1938,10 @@ itemsSpec3 = {    -- items id
     {
       id = 1050601,
       name = "🦇Blood Medallion"
+    },
+    {
+      id = 1050701,
+      name = "🦇??? Medallion"
     }
   },
   {
@@ -2138,6 +1968,10 @@ itemsSpec3 = {    -- items id
     {
       id = 1060601,
       name = "🌀Rapid Bracelet"
+    },
+    {
+      id = 1060701,
+      name = "🌀??? Bracelet"
     }
   },
   {
@@ -2164,6 +1998,10 @@ itemsSpec3 = {    -- items id
     {
       id = 1070601,
       name = "📄Contract of the Giants"
+    },
+    {
+      id = 1070701,
+      name = "📄 ???"
     }
   },
   {
