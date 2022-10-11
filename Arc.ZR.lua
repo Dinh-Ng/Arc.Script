@@ -436,7 +436,7 @@ function dropmeq()  --- drop 1 equip itemsSpec3
 	gg.clearResults()
 	t = gg.getListItems()
 	gg.loadResults(t)
-	gg.refineNumber("1010101~1070601", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+	gg.refineNumber("1010101~1070701", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
 	revert = gg.getResults(1, nil, nil, nil, nil, nil, nil, nil, nil)
 	if gg.getResultCount() >1 then
 		gg.editAll("61201", gg.TYPE_DWORD)
@@ -504,8 +504,8 @@ function dropofic()     --- drop 1 type equip itemsSpeccd 3
   end
   gg.clearResults()
   gg.setRanges(gg.REGION_ANONYMOUS)
-  gg.searchNumber("2Q;1010101~1070602;1Q::29", gg.TYPE_DWORD, false, gg.SIGN_EQUAL)
-  gg.refineNumber("1010101~1070602", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+  gg.searchNumber("2Q;1010101~1070701;1Q::29", gg.TYPE_DWORD, false, gg.SIGN_EQUAL)
+  gg.refineNumber("1010101~1070701", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
   revert = gg.getResults(1000, nil, nil, nil, nil, nil, nil, nil, nil)
   local t = gg.getResults(1000, nil, nil, nil, nil, nil, nil, nil, nil)
   local newValues = {}
