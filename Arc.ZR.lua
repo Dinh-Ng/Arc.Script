@@ -1787,40 +1787,43 @@ itemsSpec3 = {    -- items id
   {
     {
       id = 1010101,
-      name = "🏹Bold Courageous"
+      name = "🏹 Brave Bow - "
     },
     {
       id = 1010201,
-      name = "⛏Death Scythe"
+      name = "⛏ Death Scythe - "
     },
-    {id = 1010301, name = "🗡Haw"},
+    {
+      id = 1010301,
+      name = "🗡 Saw Blade - "
+    },
     {
       id = 1010401,
-      name = "♻️ Tornado"
+      name = "♻️ Tornado - "
     },
     {
       id = 1010501,
-      name = "📍Hunter's Bat"
+      name = "📍 Stalker Staff - "
     },
     {
       id = 1010601,
-      name = "🔱Bright Spear"
+      name = "🔱 Bright Spear - "
     },
     {
       id = 1010701,
-      name = "🏹Vendaval"
+      name = "🏹 Gale Force - "
     },
     {
       id = 1010801,
-      name = "🏒Demon Blade - Rain"
+      name = "🏒 Demon Blade - Rain"
     },
     {
       id = 1010901,
-      name = "🧸Mini Atreus"
+      name = "🧸 Mini Atreus"
     },
     {
       id = 1011001,
-      name = "🗡️Sword"
+      name = "🗡️ Sword"
     }
   },
   {
@@ -1850,7 +1853,7 @@ itemsSpec3 = {    -- items id
     },
     {
       id = 1020701,
-      name = "🧥New Cloak"
+      name = "🧥 ??? Cloak"
     }
   },
   {
