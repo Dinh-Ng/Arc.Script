@@ -47,23 +47,26 @@ function menudrop() --- infi drop sub menu
     "✡️Rớt 1 loại đồ🏹🛡",   --5
     "✡️Rớt 1 loại giấy 📜📜📜", --6
     "✡️Rớt 1 loại đá quý💎",    --7
-	  "✡️Rớt đồ vô tận chế độ mỏ💣💣💣",--8
-    "✡️Back↩️"--9
+    "✡️Rớt 1 loại đá ma thuật💎",    --8
+	  "✡️Rớt đồ vô tận chế độ mỏ💣💣💣",--9
+    "✡️Back↩️"--10
 	}, nil, "🎯🎯🎯Select What You Want📥")
 	if menud == nil then 	return				else
 	  if (menud[1]) then	golact()			 end
 	  if (menud[2]) then    dropinf()			 end
 	  if (menud[3]) then    dropinf()
 							dropmej()
-							droperg()
 							dropofic()
+							droperg()
+              dropstone()
 							golact()			 end
 	  if (menud[4]) then    dropmej()			 end
 	  if (menud[5]) then    dropofic()			 end
 	  if (menud[6]) then    droperg()			 end
 	  if (menud[7]) then    dropmotj()			 end
-	  if (menud[8]) then    dropmym()			 end
-	  if (menud[9])	then	main()				 end
+	  if (menud[8]) then    dropstone()			 end
+	  if (menud[9]) then    dropmym()			 end
+	  if (menud[10])	then	main()				 end
 	end
 end
 
@@ -436,7 +439,7 @@ function dropmeq()  --- drop 1 equip itemsSpec3
 	gg.clearResults()
 	t = gg.getListItems()
 	gg.loadResults(t)
-	gg.refineNumber("1010101~1070601", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+	gg.refineNumber("1010101~1070701", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
 	revert = gg.getResults(1, nil, nil, nil, nil, nil, nil, nil, nil)
 	if gg.getResultCount() >1 then
 		gg.editAll("61201", gg.TYPE_DWORD)
@@ -504,8 +507,8 @@ function dropofic()     --- drop 1 type equip itemsSpeccd 3
   end
   gg.clearResults()
   gg.setRanges(gg.REGION_ANONYMOUS)
-  gg.searchNumber("2Q;1010101~1070602;1Q::29", gg.TYPE_DWORD, false, gg.SIGN_EQUAL)
-  gg.refineNumber("1010101~1070602", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+  gg.searchNumber("2Q;1010101~1070701;1Q::29", gg.TYPE_DWORD, false, gg.SIGN_EQUAL)
+  gg.refineNumber("1010101~1070701", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
   revert = gg.getResults(1000, nil, nil, nil, nil, nil, nil, nil, nil)
   local t = gg.getResults(1000, nil, nil, nil, nil, nil, nil, nil, nil)
   local newValues = {}
@@ -545,9 +548,38 @@ function droperg()  --- drop 1 type scroll itemsScroll
 	  revert = gg.getResults(1)
     gg.editAll(itemsScroll[item].id, gg.TYPE_DWORD)
 	  gg.clearResults()
-    gg.toast("The selected Scroll will always Drop now")
+    -- gg.toast("The selected Scroll will always Drop now")
     gg.clearResults()
     gg.toast(string.format("%s ℹSuccess Drop Ativado📥", itemsScroll[item].name), true)
+  end
+end
+function dropstone()  --- drop 1 type stone itemsStoneDragon
+  local item = gg.choice(map(itemsStoneDragon, function(item)
+    return item.name
+  end), nil, "ℹWhich MageStone do you want to Drop?? 📥");
+  if item == nil then
+    return
+  end
+  gg.clearResults()
+  gg.setRanges(gg.REGION_ANONYMOUS)
+  gg.searchNumber("151;7933~8235Q;38101~38103::85", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+  gg.refineNumber("38101~38103", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+  revert = gg.getResults(50, nil, nil, nil, nil, nil, nil, nil, nil)
+  if gg.getResultsCount() < 1 then
+    gg.clearResults()
+    gg.alert("⚠️Couldn't activate this hack at the moment!♨️ ...\n\nℹTry again or restart the game😪")
+  else
+    gg.editAll(itemsStoneDragon[item].id, gg.TYPE_DWORD)
+	  gg.clearResults()
+	  t = gg.getListItems()
+    gg.loadResults(t)
+    gg.refineNumber("38101~38103", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+	  revert = gg.getResults(1)
+    gg.editAll(itemsStoneDragon[item].id, gg.TYPE_DWORD)
+	  gg.clearResults()
+    -- gg.toast("The selected Scroll will always Drop now")
+    gg.clearResults()
+    gg.toast(string.format("%s ℹSuccess Drop Ativado📥", itemsStoneDragon[item].name), true)
   end
 end
 
@@ -1787,40 +1819,43 @@ itemsSpec3 = {    -- items id
   {
     {
       id = 1010101,
-      name = "🏹Bold Courageous"
+      name = "🏹 Brave Bow - "
     },
     {
       id = 1010201,
-      name = "⛏Death Scythe"
+      name = "⛏ Death Scythe - "
     },
-    {id = 1010301, name = "🗡Haw"},
+    {
+      id = 1010301,
+      name = "🗡 Saw Blade - "
+    },
     {
       id = 1010401,
-      name = "♻️ Tornado"
+      name = "♻️ Tornado - "
     },
     {
       id = 1010501,
-      name = "📍Hunter's Bat"
+      name = "📍 Stalker Staff - "
     },
     {
       id = 1010601,
-      name = "🔱Bright Spear"
+      name = "🔱 Bright Spear - "
     },
     {
       id = 1010701,
-      name = "🏹Vendaval"
+      name = "🏹 Gale Force - "
     },
     {
       id = 1010801,
-      name = "🏒Demon Blade - Rain"
+      name = "🏒 Demon Blade - Rain"
     },
     {
       id = 1010901,
-      name = "🧸Mini Atreus"
+      name = "🧸 Mini Atreus"
     },
     {
       id = 1011001,
-      name = "🗡️Sword"
+      name = "🗡️ Sword"
     }
   },
   {
@@ -1850,7 +1885,7 @@ itemsSpec3 = {    -- items id
     },
     {
       id = 1020701,
-      name = "🧥New Cloak"
+      name = "🧥 ??? Cloak"
     }
   },
   {
@@ -2066,6 +2101,20 @@ itemsScroll = {   -- scroll id
   {
     id = 30107,
     name = "📚 Book Scroll"
+  }
+}
+itemsStoneDragon = {
+  {
+    id = 38101,
+    name = "🏹 ATK stone"
+  },
+  {
+    id = 38102,
+    name = "🛡 DEF stone"
+  },
+  {
+    id = 38103,
+    name = "💍 BALANCE stone"
   }
 }
 itemsBoss = {     -- Egg boss id
