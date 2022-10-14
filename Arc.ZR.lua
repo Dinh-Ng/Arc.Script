@@ -829,16 +829,16 @@ function multinm()  --- Max drop chap 32(?)
     local t = gg.getResults(100, nil, nil, nil, nil, nil, nil, nil, nil)
 	  local newValues = {}
     for i, v in ipairs(t) do
-		  if v.value < 6 then
+		  if v.value < 6 then                                   --- Đá đen
 		    v.value = 6
 		    table.insert(newValues, v)
-		  elseif v.value < 9 then
+		  elseif v.value < 9 then                               --- Đá đỏ, ma phap
 			  v.value = 9
 		    table.insert(newValues, v)
-		  elseif v.value < values[1] + 1 then
+		  elseif v.value < values[1] + 1 then                   --- Chip
 			  v.value = values[1]
 		    table.insert(newValues, v)
-		  elseif v.value > values[1] + 1 and v.value < 115 then
+		  elseif v.value > values[1] + 1 and v.value < 115 then --- Giấy, Sapphire
 			  v.value = 115
 		    table.insert(newValues, v)
 		  end
@@ -900,12 +900,14 @@ function telesand() --- teleport with root
     return item.name
   end), nil, "jump jump jump")
   if item == 7 then
-	local config = loadConfig()
-	local values = gg.prompt({
-    "ℹ Where u want to jump?📥 ",
-    }, config.telesand or {}, {"number"})
-	itemstle[7].id = values[1]
-	if values 	== nil then   	return 		end
+	  local config = loadConfig()
+	  local values = gg.prompt({
+      "ℹ Where u want to jump?📥 ",
+      }, config.telesand or {}, {"number"})
+	  itemstle[7].id = values[1]
+    config.telesand = values[1]
+    saveConfig(config)
+    if values 	== nil then   	return 		end
   end
   if 	item 	== nil then 	return   	end
 
