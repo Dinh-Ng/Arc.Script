@@ -7,35 +7,42 @@ local state = {on = '[ ON ] ', off = '[  OFF ] '}
 -- Menu
 function main()     --- main menu
 	menu = gg.choice({
-	"✡️ Monster Treasure 20 - 20",           --1
-	"✡️ Menu Rớt Đồ📥📥📥",                  --2
-	"✡️ Rớt loại đồ cần 🏹🛡",               --3
-	"✡️ Nhân số lượng drop🏧🔢",             --4
-	"✡️ Teleport🚧🚧🚧",                     --5
-	"✡️ Nhảy 1 ngày⚡🔋",                     --6
-	"✡️ Menu Rớt Trứng🐣🐣🐣",               --7
-	"✡️ Menu Ấp Trứng🐓🐓🐓",                --8
-	"✡️ Rớt tối đa loại đồ trong 1 trận💎",  --9
-	"✡️ Mở khóa Event (giả lập)🏧",          --10
-  "✡️ Hach vàng 💰💰💰",                   --11
-	"✡️ Thay đổi số tiền 💰💰💰",            --12
-	"✡️ Hack năng lượng (giả lập)⚡",         --13
-	"✡️ Exit❌"                              --14
+  	"✡️ Monster Treasure 20 - 20",           --1
+  	"✡️ Menu Rớt Đồ📥📥📥",                  --2
+  	"✡️ Rớt loại đồ cần 🏹🛡",               --3
+  	"✡️ Teleport🚧🚧🚧",                     --4
+  	"✡️ Nhảy 1 ngày⚡🔋",                     --5
+  	"✡️ Menu Rớt Trứng🐣🐣🐣",               --6
+  	"✡️ Menu Ấp Trứng🐓🐓🐓",                --7
+  	"✡️ Rớt tối đa loại đồ trong 1 trận💎",  --8
+  	"✡️ Hach vàng 💰💰💰",                   --9
+  	"✡️ Thay đổi số tiền 💰💰💰",            --10
+  	"✡️ Khác"                                 --11
+  	"✡️ Exit❌"                               --12
 	}, nil, "🙉🙉🙉 Archero🎯 For friend only 🙉🙉🙉")
 	if menu == 1  then 	gig()		end
 	if menu == 2	then 	menudrop()  	end
 	if menu == 3  then 	dropmeq()		end
-	if menu == 4	then 	multi()  		end
-	if menu == 5 	then 	telesand()  	end
-	if menu == 6 	then 	etenegry() 		end
-	if menu == 7 	then 	menuegg()  		end
-	if menu == 8 	then 	mhegg()   		end
-	if menu == 9 	then 	multinm()  		end
-	if menu == 10 	then 	event()  		end
-  if menu == 11 then golact() end
-	if menu == 12 	then 	golmax()   		end
-	if menu == 13 	then 	engery()   		end
-	if menu == 14 	then 	os.exit()	end
+	if menu == 4 	then 	telesand()  	end
+	if menu == 5 	then 	etenegry() 		end
+	if menu == 6 	then 	menuegg()  		end
+	if menu == 7 	then 	mhegg()   		end
+	if menu == 8 	then 	multinm()  		end
+  if menu == 9  then  golact() end
+	if menu == 10 then 	golmax()   		end
+	if menu == 11 then 	other()	end
+	if menu == 12 then 	os.exit()	end
+end
+
+function other()  ---  Other unusual functions
+  menuother = gg.choice({
+	  "✡️ Nhân số lượng drop🏧🔢",             --1
+	  "✡️ Mở khóa Event (giả lập)🏧",          --2
+  	"✡️ Hack năng lượng (giả lập)⚡",         --3
+  }, nil, "Other unusual features")
+	if menu == 1	then 	multi()  		end
+	if menu == 2 then 	event()  		end
+	if menu == 3 then 	engery()   		end
 end
 
 function menudrop() --- infi drop sub menu
@@ -814,7 +821,7 @@ function multinm()  --- Max drop chap 32(?)
   local config = loadConfig()
   local values = gg.prompt({
     "ℹHow many chip did you drop?📥 ",
-    }, config.chip or {"22"}, {"number"})
+    }, config.chip or {"26"}, {"number"})
   if values == nil then
     return
   end
@@ -829,16 +836,16 @@ function multinm()  --- Max drop chap 32(?)
     local t = gg.getResults(100, nil, nil, nil, nil, nil, nil, nil, nil)
 	  local newValues = {}
     for i, v in ipairs(t) do
-		  if v.value < 6 then
+		  if v.value < 6 then                                   --- Đá đen
 		    v.value = 6
 		    table.insert(newValues, v)
-		  elseif v.value < 9 then
+		  elseif v.value < 9 then                               --- Đá đỏ, ma phap
 			  v.value = 9
 		    table.insert(newValues, v)
-		  elseif v.value < values[1] + 1 then
+		  elseif v.value < values[1] + 1 then                   --- Chip
 			  v.value = values[1]
 		    table.insert(newValues, v)
-		  elseif v.value >22 and v.value < 115 then
+		  elseif v.value > values[1] + 1 and v.value < 115 then --- Giấy, Sapphire
 			  v.value = 115
 		    table.insert(newValues, v)
 		  end
@@ -900,12 +907,14 @@ function telesand() --- teleport with root
     return item.name
   end), nil, "jump jump jump")
   if item == 7 then
-	local config = loadConfig()
-	local values = gg.prompt({
-    "ℹ Where u want to jump?📥 ",
-    }, config.telesand or {}, {"number"})
-	itemstle[7].id = values[1]
-	if values 	== nil then   	return 		end
+	  local config = loadConfig()
+	  local values = gg.prompt({
+      "ℹ Where u want to jump?📥 ",
+      }, config.telesand or {}, {"number"})
+	  itemstle[7].id = values[1]
+    config.telesand = values[1]
+    saveConfig(config)
+    if values 	== nil then   	return 		end
   end
   if 	item 	== nil then 	return   	end
 
@@ -1068,187 +1077,187 @@ itemshbossegg = { -- hatch boss egg --
 itemshnegg = {    -- hatch normal egg
   {
     id = 1001,
-    name = " \240\159\144\163 35 Green Bat Egg \240\159\166\135 (200)"
+    name = "01 \240\159\144\163 35 Green Bat Egg \240\159\166\135 (200)"
   },
   {
     id = 1002,
-    name = " \240\159\144\163 20 Slime Egg \240\159\144\184 80"
+    name = "02 \240\159\144\163 20 Slime Egg \240\159\144\184 80"
   },
   {
     id = 1003,
-    name = " \240\159\144\163 36 Bomb Ghost Egg \240\159\145\187 (300)"
+    name = "03 \240\159\144\163 36 Bomb Ghost Egg \240\159\145\187 (300)"
   },
   {
     id = 1004,
-    name = " \240\159\144\163 30 Stone Dummy Egg \240\159\164\150 (250)"
+    name = "04 \240\159\144\163 30 Stone Dummy Egg \240\159\164\150 (250)"
   },
   {
     id = 1005,
-    name = " \240\159\144\163 75 Party Tree Egg \240\159\140\178 (55)0"
+    name = "05 \240\159\144\163 75 Party Tree Egg \240\159\140\178 (55)0"
   },
   {
     id = 1006,
-    name = " \240\159\144\163 75 Greyhound Egg \240\159\144\182 (650)"
+    name = "06 \240\159\144\163 75 Greyhound Egg \240\159\144\182 (650)"
   },
   {
     id = 1007,
-    name = " \240\159\144\163 60 Skeleton Archer Egg \240\159\143\185 (450)"
+    name = "07 \240\159\144\163 60 Skeleton Archer Egg \240\159\143\185 (450)"
   },
   {
     id = 1008,
-    name = " \240\159\144\163 120 Skeleton Soldier Egg \226\152\160 (1800)"
+    name = "08 \240\159\144\163 120 Skeleton Soldier Egg \226\152\160 (1800)"
   },
   {
     id = 1009,
-    name = " \240\159\144\163 65 Wasp Egg \240\159\144\157 (550)"
+    name = "09 \240\159\144\163 65 Wasp Egg \240\159\144\157 (550)"
   },
   {
     id = 1010,
-    name = " \240\159\144\163 75 Fire Mage Egg \240\159\146\130 (1000)"
+    name = "10 \240\159\144\163 75 Fire Mage Egg \240\159\146\130 (1000)"
   },
   {
     id = 1011,
-    name = " \240\159\144\163 70 Jellyfish Egg \240\159\167\156\226\128\141\226\153\128\239\184\143 (1200)"
+    name = "11 \240\159\144\163 70 Jellyfish Egg \240\159\167\156\226\128\141\226\153\128\239\184\143 (1200)"
   },
   {
     id = 1012,
-    name = " \240\159\144\163 60 Ice Mage Egg \226\157\132\239\184\143 (950)"
+    name = "12 \240\159\144\163 60 Ice Mage Egg \226\157\132\239\184\143 (950)"
   },
   {
     id = 1013,
-    name = " \240\159\144\163 55 Fire Lizard Egg \240\159\144\138 (1000)"
+    name = "13 \240\159\144\163 55 Fire Lizard Egg \240\159\144\138 (1000)"
   },
   {
     id = 1014,
-    name = " \240\159\144\163 90 Flaming Ghost Egg \240\159\148\165 (2200)"
+    name = "14 \240\159\144\163 90 Flaming Ghost Egg \240\159\148\165 (2200)"
   },
   {
     id = 1015,
-    name = " \240\159\144\163 80 Thorny Snake Egg \240\159\144\141 (1600)"
+    name = "15 \240\159\144\163 80 Thorny Snake Egg \240\159\144\141 (1600)"
   },
   {
     id = 1016,
-    name = " \240\159\144\163 35 Tornado Demon Egg \240\159\145\191 (450)"
+    name = "16 \240\159\144\163 35 Tornado Demon Egg \240\159\145\191 (450)"
   },
   {
     id = 1017,
-    name = " \240\159\144\163 48 Piranha Egg \240\159\144\159 (400)"
+    name = "17 \240\159\144\163 48 Piranha Egg \240\159\144\159 (400)"
   },
   {
     id = 1018,
-    name = " \240\159\144\163 90 Zombie Egg \240\159\167\159\226\128\141\226\153\130\239\184\143 (1800)"
+    name = "18 \240\159\144\163 90 Zombie Egg \240\159\167\159\226\128\141\226\153\130\239\184\143 (1800)"
   },
   {
     id = 1019,
-    name = " \240\159\144\163 60 Scarecrow Egg \240\159\145\183\226\128\141\226\153\130\239\184\143 (700)"
+    name = "19 \240\159\144\163 60 Scarecrow Egg \240\159\145\183\226\128\141\226\153\130\239\184\143 (700)"
   },
   {
     id = 1020,
-    name = " \240\159\144\163 75 Long Dragon Egg \240\159\144\137 (1600)"
+    name = "20 \240\159\144\163 75 Long Dragon Egg \240\159\144\137 (1600)"
   },
   {
     id = 1021,
-    name = " \240\159\144\163 60 Skull Mage Egg \226\152\160 (850)"
+    name = "21 \240\159\144\163 60 Skull Mage Egg \226\152\160 (850)"
   },
   {
     id = 1022,
-    name = " \240\159\144\163 55 Larva Golem Egg \240\159\166\160 (800)"
+    name = "22 \240\159\144\163 55 Larva Golem Egg \240\159\166\160 (800)"
   },
   {
     id = 1023,
-    name = " \240\159\144\163 75 Ice Golem Egg \240\159\166\143 (1200)"
+    name = "23 \240\159\144\163 75 Ice Golem Egg \240\159\166\143 (1200)"
   },
   {
     id = 1024,
-    name = " \240\159\144\163 65 Cactus Egg \240\159\140\181 (900)"
+    name = "24 \240\159\144\163 65 Cactus Egg \240\159\140\181 (900)"
   },
   {
     id = 1025,
-    name = " \240\159\144\163 90 Mad Spider Egg \240\159\149\183 (1800)"
+    name = "25 \240\159\144\163 90 Mad Spider Egg \240\159\149\183 (1800)"
   },
   {
     id = 1026,
-    name = " \240\159\144\163 56/95 Fire Element Egg \240\159\143\181 (2800)"
+    name = "26 \240\159\144\163 56/95 Fire Element Egg \240\159\143\181 (2800)"
   },
   {
     id = 1027,
-    name = " \240\159\144\163 85 Swordsman Skeleton Egg \240\159\146\128 (1400)"
+    name = "27 \240\159\144\163 85 Swordsman Skeleton Egg \240\159\146\128 (1400)"
   },
   {
     id = 1028,
-    name = " \240\159\144\163 85 Sickle Mage Egg \240\159\145\187 (1400)"
+    name = "28 \240\159\144\163 85 Sickle Mage Egg \240\159\145\187 (1400)"
   },
   {
     id = 1029,
-    name = " \240\159\144\163 75 Shadowslayer Egg \240\159\145\164 (950)"
+    name = "29 \240\159\144\163 75 Shadowslayer Egg \240\159\145\164 (950)"
   },
   {
     id = 1030,
-    name = " \240\159\144\163 55 Tornado Mage Egg \240\159\140\170 (700)"
+    name = "30 \240\159\144\163 55 Tornado Mage Egg \240\159\140\170 (700)"
   },
   {
     id = 1031,
-    name = " \240\159\144\163 65 Pea Shooter Egg \240\159\140\177 (1350)"
+    name = "31 \240\159\144\163 65 Pea Shooter Egg \240\159\140\177 (1350)"
   },
   {
     id = 1032,
-    name = "\240\159\165\154 Hell Puppet Egg"
+    name = "32 \240\159\165\154 Hell Puppet Egg"
   },
   {
     id = 1033,
-    name = "\240\159\165\154 Fallen Bat Egg\195\173"
+    name = "33 \240\159\165\154 Fallen Bat Egg\195\173"
   },
   {
     id = 1034,
-    name = "\240\159\165\154 Sandian's Egg"
+    name = "34 \240\159\165\154 Sandian's Egg"
   },
   {
     id = 1035,
-    name = "\240\159\165\154 Psionic Scarecrow Egg\195\180"
+    name = "35 \240\159\165\154 Psionic Scarecrow Egg\195\180"
   },
   {
     id = 1036,
-    name = "\240\159\165\154 Wild Spider Egg"
+    name = "36 \240\159\165\154 Wild Spider Egg"
   },
   {
     id = 1037,
-    name = "\240\159\165\154 One-Eyed Bat Egg"
+    name = "37 \240\159\165\154 One-Eyed Bat Egg"
   },
   {
     id = 1038,
-    name = "\240\159\165\154 Dragon Egg\195\163o Tundra"
+    name = "38 \240\159\165\154 Dragon Egg\195\163o Tundra"
   },
   {
     id = 1039,
-    name = "\240\159\165\154 Purple Ghost Egg"
+    name = "39 \240\159\165\154 Purple Ghost Egg"
   },
   {
     id = 1040,
-    name = "\240\159\165\154 Frosty Ghost Egg"
+    name = "40 \240\159\165\154 Frosty Ghost Egg"
   },
   {
     id = 1041,
-    name = "\240\159\165\154 Steel Dr\195\173ade's Egg"
+    name = "41 \240\159\165\154 Steel Dr\195\173ade's Egg"
   },
   {
     id = 1042,
-    name = "\240\159\165\154 Flaming Bug Egg"
+    name = "42 \240\159\165\154 Flaming Bug Egg"
   },
   {
     id = 1043,
-    name = "\240\159\165\154 Elite Archer Egg"
+    name = "43 \240\159\165\154 Elite Archer Egg"
   },
   {
     id = 1044,
-    name = "\240\159\165\154 Spinning Mushroom Egg"
+    name = "44 \240\159\165\154 Spinning Mushroom Egg"
   },
   {
     id = 1045,
-    name = "\240\159\165\154 Spitting Mushroom Egg"
+    name = "45 \240\159\165\154 Spitting Mushroom Egg"
   },
   {
     id = 1046,
-    name = "\240\159\165\154 Scarlet Mage Egg"
+    name = "46 \240\159\165\154 Scarlet Mage Egg"
   }
 }
 itemsSpec6 = {    -- skill id

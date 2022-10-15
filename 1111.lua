@@ -290,7 +290,7 @@ function god()
     gg.clearResults()
   end
 end
-function godoriginal()
+function godoriginal()   --- REMOVED
   gg.clearResults()
   gg.setRanges(gg.REGION_ANONYMOUS)
   gg.searchNumber("721~867;725~17163Q;1Q;1Q;1Q;1Q;1Q;1Q;1Q;1;1::293", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
@@ -564,7 +564,7 @@ function drag()
     gg.clearResults()
   end
 end
-function dragnone()
+function dragnone()   --- NOT USE ???
   gg.clearResults()
   gg.setRanges(gg.REGION_ANONYMOUS)
   gg.searchNumber("5000000~9000000Q;1000000000~2200000000;1000000000~2200000000;1Q;1000000000~2200000000;1000000000~2200000000;1Q;1;-1;1::61", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
@@ -860,17 +860,17 @@ end
 
 function menudrop()
   menud = gg.choice({
-    state8 .. "\240\159\148\140 Infinite Drops\226\153\139",
-    "________________________________\n\n\226\153\139 Drop Me Equips \240\159\143\185\240\159\155\161",
-    "\226\153\139 Drop Me Items \240\159\147\166",
-    "\226\153\139 Drop Me Scrolls \240\159\147\156",
-    "\226\153\139 Drop Me Jewelry \240\159\148\183\239\184\143\240\159\148\182\239\184\143",
-    "\226\156\157\239\184\143 Drop 1 Dragon Statue Type\240\159\144\137\n\226\154\160\239\184\143Not Available for Drops\240\159\154\171\n________________________________\n",
-    "1\239\184\143\226\131\163 Drop 1 Egg Type\240\159\165\154",
-    "2\239\184\143\226\131\163 Drop 1 Type Equip\240\159\143\185 (\240\159\148\130 Sapphire\240\159\146\142)",
-    "3\239\184\143\226\131\163 Drop 1 Type Equip\226\154\148 (Official\240\159\147\165)",
-    "4\239\184\143\226\131\163 Drop 1 Scroll Type\240\159\147\156(Official)",
-    "5\239\184\143\226\131\163 Drop 1 Item Type\240\159\146\142\240\159\150\178\226\154\150",
+    state8 .. "\240\159\148\140 Infinite Drops\226\153\139", ---1.
+    "________________________________\n\n\226\153\139 Drop Me Equips \240\159\143\185\240\159\155\161",   ---2.
+    "\226\153\139 Drop Me Items \240\159\147\166",   ---3.
+    "\226\153\139 Drop Me Scrolls \240\159\147\156",   ---4.
+    "\226\153\139 Drop Me Jewelry \240\159\148\183\239\184\143\240\159\148\182\239\184\143",   ---5.
+    "\226\156\157\239\184\143 Drop 1 Dragon Statue Type\240\159\144\137\n\226\154\160\239\184\143Not Available for Drops\240\159\154\171\n________________________________\n",   ---6.
+    "1\239\184\143\226\131\163 Drop 1 Egg Type\240\159\165\154",   ---7.
+    "2\239\184\143\226\131\163 Drop 1 Type Equip\240\159\143\185 (\240\159\148\130 Sapphire\240\159\146\142)",   ---8.
+    "3\239\184\143\226\131\163 Drop 1 Type Equip\226\154\148 (Official\240\159\147\165)",   ---9.
+    "4\239\184\143\226\131\163 Drop 1 Scroll Type\240\159\147\156(Official)",   ---10.
+    "5\239\184\143\226\131\163 Drop 1 Item Type\240\159\146\142\240\159\150\178\226\154\150",   ---11.
     "\226\134\169 Back"
   }, nil, "\226\132\185To activate infinite item drops(\226\153\139) the Activator must be turned on First, then Select the item you want to Drop in \227\128\138Drope me\227\128\139\240\159\147\165")
   if menud == 1 then
@@ -881,41 +881,19 @@ function menudrop()
     end
     dropinf()
   end
-  if menud == 2 then
-    dropmeq()
-  end
-  if menud == 3 then
-    dropmei()
-  end
-  if menud == 4 then
-    dropscroll()
-  end
-  if menud == 5 then
-    dropmej()
-  end
-  if menud == 6 then
-    dropstatu()
-  end
-  if menud == 7 then
-    dropovo()
-  end
-  if menud == 8 then
-    drop()
-  end
-  if menud == 9 then
-    ofic()
-  end
-  if menud == 10 then
-    droperg()
-  end
-  if menud == 11 then
-    dropitem()
-  end
-  if menud == 12 then
-    main()
-  end
+  if menud == 2 dropmeq()     end
+  if menud == 3 dropmei()     end
+  if menud == 4 dropscroll()  end
+  if menud == 5 dropmej()     end
+  if menud == 6 dropstatu()   end
+  if menud == 7 dropovo()     end
+  if menud == 8 drop()        end
+  if menud == 9 ofic()        end
+  if menud == 10 droperg()    end
+  if menud == 11 dropitem()   end
+  if menud == 12 main()       end
 end
-function dropovo()
+function dropovo()   --- DROP EGG
   dropo = gg.choice({
     "1\239\184\143\226\131\163  Ovos de Monstros comuns\240\159\165\154",
     "2\239\184\143\226\131\163  Ovos de Chefes\240\159\165\148",
@@ -923,21 +901,11 @@ function dropovo()
     "\240\159\147\150 Instru\195\167\195\181es",
     "\226\134\169\239\184\143 voltar ao menu"
   }, nil, "\226\132\185Choose a type of Egg\240\159\165\154 you want to collect\240\159\147\165")
-  if dropo == 1 then
-    dropcomum()
-  end
-  if dropo == 2 then
-    dropboss()
-  end
-  if dropo == 3 then
-    degg()
-  end
-  if dropo == 4 then
-    egg()
-  end
-  if dropo == 5 then
-    main()
-  end
+  if dropo == 1 then dropcomum() end
+  if dropo == 2 then dropboss()  end
+  if dropo == 3 then degg()      end
+  if dropo == 4 then egg()       end
+  if dropo == 5 then main()      end
 end
 function dropinf()
   f = gg.alert("\226\154\160\239\184\143 What platform are you playing?", "\240\159\142\174Root\nx8Sandbox\n\240\159\149\185Parallel Space\nVmos", "Virtual Xposed", "\226\134\169Back")
