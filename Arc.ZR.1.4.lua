@@ -6,32 +6,32 @@ local state = {on = '[ ON ] ', off = '[  OFF ] '}
 
 -- Menu
 function main()     --- main menu
-	menu = gg.choice({
-  	"✡️ Monster Treasure 20 - 20",           --1
-  	"✡️ Menu Rớt Đồ📥📥📥",                  --2
-  	"✡️ Rớt loại đồ cần 🏹🛡",               --3
-  	"✡️ Teleport🚧🚧🚧",                     --4
-  	"✡️ Nhảy 1 ngày⚡🔋",                     --5
-  	"✡️ Menu Rớt Trứng🐣🐣🐣",               --6
-  	"✡️ Menu Ấp Trứng🐓🐓🐓",                --7
-  	"✡️ Rớt tối đa loại đồ trong 1 trận💎",  --8
-  	"✡️ Hach vàng 💰💰💰",                   --9
-  	"✡️ Thay đổi số tiền 💰💰💰",            --10
-  	"✡️ Khác"                                 --11
-  	"✡️ Exit❌"                               --12
+  menu = gg.choice({
+    "✡️ Monster Treasure 20🦴 - 20🍖",           --1
+    "✡️ Menu Rớt Đồ 📥📥📥",                 --2
+    "✡️ Rớt loại đồ cần 🏹🛡🗡️",             --3
+    "✡️ Teleport 🚧🚧🚧",                    --4
+    "✡️ Nhảy 1 ngày⚡🔋",                     --5
+    "✡️ Menu Rớt Trứng 🐣🐣🐣",              --6
+    "✡️ Menu Ấp Trứng 🐓🐓🐓",               --7
+    "✡️ Rớt đồ tối đa map 35H 💎💎💎",       --8
+    "✡️ Hach vàng 💰💰💰",                   --9
+    "✡️ Thay đổi số tiền 💰💰💰",            --10
+    "✡️ Khác 🚸🚸🚸",                        --11
+    "✡️ Exit ❌"                             --12
 	}, nil, "🙉🙉🙉 Archero🎯 For friend only 🙉🙉🙉")
-	if menu == 1  then 	gig()		end
-	if menu == 2	then 	menudrop()  	end
-	if menu == 3  then 	dropmeq()		end
-	if menu == 4 	then 	telesand()  	end
-	if menu == 5 	then 	etenegry() 		end
-	if menu == 6 	then 	menuegg()  		end
-	if menu == 7 	then 	mhegg()   		end
-	if menu == 8 	then 	multinm()  		end
+  if menu == 1  then 	gig()		end
+  if menu == 2  then 	menudrop()  	end
+  if menu == 3  then 	dropmeq()		end
+  if menu == 4  then 	telesand()  	end
+  if menu == 5  then 	etenegry() 		end
+  if menu == 6  then 	menuegg()  		end
+  if menu == 7  then 	mhegg()   		end
+  if menu == 8  then 	multinm()  		end
   if menu == 9  then  golact() end
-	if menu == 10 then 	golmax()   		end
-	if menu == 11 then 	other()	end
-	if menu == 12 then 	os.exit()	end
+  if menu == 10 then 	golmax()   		end
+  if menu == 11 then 	other()	end
+  if menu == 12 then 	os.exit()	end
 end
 
 function other()  ---  Other unusual functions
@@ -40,26 +40,25 @@ function other()  ---  Other unusual functions
 	  "✡️ Mở khóa Event (giả lập)🏧",          --2
   	"✡️ Hack năng lượng (giả lập)⚡",         --3
   }, nil, "Other unusual features")
-	if menu == 1	then 	multi()  		end
-	if menu == 2 then 	event()  		end
-	if menu == 3 then 	engery()   		end
+	if menu == 1 then multi()     end
+	if menu == 2 then event()     end
+	if menu == 3 then engery()    end
 end
 
 function menudrop() --- infi drop sub menu
   menud = gg.multiChoice({
-    "✡️Hach vàng 💰💰💰",    --1
-	  "✡️Rớt đồ vô tận ♋",     --2
-    "✡️One Hit For Train♋♋♋",--3
-    "✡️Rớt đá quý 💎💎",     --4
-    "✡️Rớt 1 loại đồ🏹🛡",   --5
-    "✡️Rớt 1 loại giấy 📜📜📜", --6
-    "✡️Rớt 1 loại đá quý💎",    --7
-    "✡️Rớt 1 loại đá ma thuật💎",    --8
-	  "✡️Rớt đồ vô tận chế độ mỏ💣💣💣",--9
-    "✡️Back↩️"--10
+	  "✡️Rớt đồ vô tận chế độ mỏ 💣💣💣",--1
+	  "✡️Rớt đồ vô tận ♋",               --2
+    "✡️One Hit For Train♋♋♋",          --3
+    "✡️Rớt đá quý 💎💎💎",             --4
+    "✡️Rớt 1 loại đồ 🏹🛡🗡️",          --5
+    "✡️Rớt 1 loại giấy 📜📜📜",        --6
+    "✡️Rớt 1 loại đá quý  💎💎💎",     --7
+    "✡️Rớt 1 loại đá ma thuật 🔮🔮🔮", --8
+    "✡️Back↩️"                          --9
 	}, nil, "🎯🎯🎯Select What You Want📥")
 	if menud == nil then 	return				else
-	  if (menud[1]) then	golact()			 end
+	  if (menud[1]) then    dropmym()			 end
 	  if (menud[2]) then    dropinf()			 end
 	  if (menud[3]) then    dropinf()
 							dropmej()
@@ -72,8 +71,7 @@ function menudrop() --- infi drop sub menu
 	  if (menud[6]) then    droperg()			 end
 	  if (menud[7]) then    dropmotj()			 end
 	  if (menud[8]) then    dropstone()			 end
-	  if (menud[9]) then    dropmym()			 end
-	  if (menud[10])	then	main()				 end
+	  if (menud[9])	then	main()				 end
 	end
 end
 
