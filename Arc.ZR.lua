@@ -102,7 +102,7 @@ end
 function dropmym() --- multi drop Mystery mine
     gg.clearResults()
     gg.setRanges(gg.REGION_ANONYMOUS)
-    gg.searchNumber("180~215;21774~35000Q;61101~63301::85", gg.TYPE_DWORD)
+    gg.searchNumber("200~500;20000~60000Q;61101~63301::85", gg.TYPE_DWORD)
     local results = gg.getResults(gg.getResultsCount())
     for i, v in ipairs(results) do
       if v.value % 10 ~= 1 then
@@ -177,7 +177,7 @@ end
 function dropinf()  --- inf drop
 		gg.clearResults()
 		gg.setRanges(gg.REGION_ANONYMOUS)
-		gg.searchNumber("218~230;29989~48753Q;61101~63301::85", gg.TYPE_DWORD)
+		gg.searchNumber("200~500;20000~60000Q;61101~63301::85", gg.TYPE_DWORD)
 		local results = gg.getResults(gg.getResultsCount())
 		for i, v in ipairs(results) do
 		  if v.value % 10 ~= 1 then

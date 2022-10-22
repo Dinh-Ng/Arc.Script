@@ -7,7 +7,7 @@ local state = {on = '[ ON ] ', off = '[  OFF ] '}
 -- Menu
 function main()     --- main menu
   menu = gg.choice({
-    "✡️ Monster Treasure 20🦴 - 20🍖",           --1
+    "✡️ Monster Treasure 20🦴 - 20🍖",       --1
     "✡️ Menu Rớt Đồ 📥📥📥",                 --2
     "✡️ Rớt loại đồ cần 🏹🛡🗡️",             --3
     "✡️ Teleport 🚧🚧🚧",                    --4
@@ -75,7 +75,7 @@ function menudrop() --- infi drop sub menu
 	end
 end
 
-function menuegg()  --- egg sub menu
+function menuegg()  --- Drop egg sub menu
   dropo = gg.choice({
     "✡️Rớt trứng thường🥔", --1
     "✡️Rớt trứng boss🥔",      --2
@@ -87,7 +87,7 @@ function menuegg()  --- egg sub menu
   if dropo == 3 then    degg()		 		end
   if dropo == 4 then    main()		 		end
 end
-function mhegg()
+function mhegg()  --- Hatch egg sub menu
   menuhegg = gg.choice({
     "✡️Ấp trứng thường🥔",
     "✡️Ấp trứng boss🥔",
@@ -102,7 +102,7 @@ end
 function dropmym() --- multi drop Mystery mine
     gg.clearResults()
     gg.setRanges(gg.REGION_ANONYMOUS)
-    gg.searchNumber("180~215;21774~35000Q;61101~63301::85", gg.TYPE_DWORD)
+    gg.searchNumber("200~500;20000~60000Q;61101~63301::85", gg.TYPE_DWORD)
     local results = gg.getResults(gg.getResultsCount())
     for i, v in ipairs(results) do
       if v.value % 10 ~= 1 then
@@ -177,7 +177,7 @@ end
 function dropinf()  --- inf drop
 		gg.clearResults()
 		gg.setRanges(gg.REGION_ANONYMOUS)
-		gg.searchNumber("218~230;29989~48753Q;61101~63301::85", gg.TYPE_DWORD)
+		gg.searchNumber("200~500;20000~60000Q;61101~63301::85", gg.TYPE_DWORD)
 		local results = gg.getResults(gg.getResultsCount())
 		for i, v in ipairs(results) do
 		  if v.value % 10 ~= 1 then
@@ -399,7 +399,7 @@ function dropinf()  --- inf drop
 		  gg.clearResults()
 		end
 end
-function dropmej()  --- drop 1 jewel itemsSpec9
+function dropmej()  --- drop 1 jewel itemsSpec9 - Not use?
   local item = gg.choice(map(itemsSpec9, function(item)
     return item.name
   end), nil, "ℹWhich Gem do you want to Drop? 📥")
