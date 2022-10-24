@@ -910,7 +910,7 @@ function telesand() --- teleport with root
       "ℹ Where u want to jump?📥 ",
       }, config.telesand or {}, {"number"})
 	  itemstle[7].id = values[1]
-    config.telesand = values[1]
+    config.telesand = values
     saveConfig(config)
     if values 	== nil then   	return 		end
   end
