@@ -881,17 +881,17 @@ function menudrop()
     end
     dropinf()
   end
-  if menud == 2 dropmeq()     end
-  if menud == 3 dropmei()     end
-  if menud == 4 dropscroll()  end
-  if menud == 5 dropmej()     end
-  if menud == 6 dropstatu()   end
-  if menud == 7 dropovo()     end
-  if menud == 8 drop()        end
-  if menud == 9 ofic()        end
-  if menud == 10 droperg()    end
-  if menud == 11 dropitem()   end
-  if menud == 12 main()       end
+  if menud == 2  then dropmeq()     end
+  if menud == 3  then dropmei()     end
+  if menud == 4  then dropscroll()  end
+  if menud == 5  then dropmej()     end
+  if menud == 6  then dropstatu()   end
+  if menud == 7  then dropovo()     end
+  if menud == 8  then drop()        end
+  if menud == 9  then ofic()        end
+  if menud == 10 then  droperg()    end
+  if menud == 11 then  dropitem()   end
+  if menud == 12 then  main()       end
 end
 function dropovo()   --- DROP EGG
   dropo = gg.choice({

@@ -6,7 +6,7 @@ local state = {on = '[ ON ] ', off = '[  OFF ] '}
 
 -- Menu
 function main()     --- main menu
-  menu = gg.choice({
+  local menu = gg.choice({
     "✡️ Monster Treasure 20🦴 - 20🍖",       --1
     "✡️ Menu Rớt Đồ 📥📥📥",                 --2
     "✡️ Rớt loại đồ cần 🏹🛡🗡️",             --3
@@ -180,15 +180,17 @@ function dropinf()  --- inf drop
 		gg.searchNumber("200~500;20000~60000Q;61101~63301::85", gg.TYPE_DWORD)
 		local results = gg.getResults(gg.getResultsCount())
 		for i, v in ipairs(results) do
-		  if v.value % 10 ~= 1 then
-			results[i] = nil
-		end
+		  if v.value % 100 ~= 1 then
+			  results[i] = nil
+		  end
 		end
 		gg.loadResults(results)
 		gg.refineNumber("61101~63301", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
 		local t = gg.getResults(20, nil, nil, nil, nil, nil, nil, nil, nil)
 		gg.addListItems(t)
 		gg.clearResults()
+
+    gg.toast("\226\143\169Loading... 50% of 1/2")
 
 		gg.setRanges(gg.REGION_ANONYMOUS)
 		gg.searchNumber("121;1086;31001::85", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 1)
@@ -1922,11 +1924,11 @@ itemsSpec3 = {    -- items id
     },
     {
       id = 1030701,
-      name = "🦁Ring of the ???"
+      name = "🐉Ring of the Dragon"
     },
     {
       id = 1030801,
-      name = "🦁Ring of the ???"
+      name = "🦇Ring of the Bat"
     }
   },
   {
