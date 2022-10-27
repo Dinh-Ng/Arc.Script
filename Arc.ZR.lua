@@ -1,11 +1,12 @@
+---@diagnostic disable: lowercase-global
 -- on/off option
-on = " [ On ] "
-off = " [ Off ] "
-local state = {on = '[ ON ] ', off = '[  OFF ] '}
+local on = " [ On ] "
+local off = " [ Off ] "
+local state = {on = on, off = off}
 
 
 -- Menu
-function main()     --- main menu
+local function main()     --- main menu
   local menu = gg.choice({
     "✡️ Monster Treasure 20🦴 - 20🍖",       --1
     "✡️ Menu Rớt Đồ 📥📥📥",                 --2
@@ -92,7 +93,7 @@ function mhegg()  --- Hatch egg sub menu
     "✡️Ấp trứng thường🥔",
     "✡️Ấp trứng boss🥔",
     "✡️Back↩️"
-  }, nill, "ℹChoose an Egg🥔 you want to hatch📥")
+  }, nil, "ℹChoose an Egg🥔 you want to hatch📥")
   if menuhegg == 1 then    eggc()   end
   if menuhegg == 2 then    eggb()   end
   if menuhegg == 3 then    main()   end
@@ -619,7 +620,7 @@ function golact() --- fuction search gold
           if x == nil then
             return
           end
-		      config.goldl = values
+		      config.goldl = x
 		      saveConfig(config)
           r = gg.getResults(3)
           local t = {}
@@ -654,7 +655,7 @@ function golact() --- fuction search gold
       gg.sleep(100)
     end
 end
-function golmax() --- gold max imput
+function golmax() --- Change hacked gold
   gg.clearResults()
   t = gg.getListItems()
   gg.loadResults(t)
@@ -670,8 +671,8 @@ function golmax() --- gold max imput
     if values == nil then
       return
     end
-	config.goldm = values
-	saveConfig(config)
+	  config.goldm = values
+	  saveConfig(config)
     revert = gg.getResults(1, nil, nil, nil, nil, nil, nil, nil, nil)
     r = gg.getResults(10)
     local t = {}
@@ -767,7 +768,7 @@ function eggc()      --- Hatch Eggs: Common
   if x == nil then
     return
   end
-  config.eggbCF = values
+  config.eggbCF = x
   saveConfig(config)
   gg.setRanges(gg.REGION_ANONYMOUS)
   gg.searchNumber(itemshnegg[item].id .. ";-10~10;" .. itemshnegg[item].id .. ";1~100" .. "::13", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
@@ -797,7 +798,7 @@ function eggb()      --- Hatch Eggs: Boss
   if x == nil then
     return
   end
-  config.eggcCF = values
+  config.eggcCF = x
   saveConfig(config)
   gg.setRanges(gg.REGION_ANONYMOUS)
   gg.searchNumber(itemshbossegg[item].id .. ";-10~10;" .. itemshbossegg[item].id .. ";1~9" .. "::13", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
@@ -816,7 +817,7 @@ end
 
 ---multi fuction
 
-function multinm()  --- Max drop chap 32(?)
+function multinm()  --- Max drop chap 35
   gg.clearResults()
   local config = loadConfig()
   local values = gg.prompt({

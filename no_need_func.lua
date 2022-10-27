@@ -1,3 +1,4 @@
+---@diagnostic disable: lowercase-global, undefined-global
 ---- other hack
 function MSTbattle()
     local item = gg.choice(map(itemsSpec7, function(item)
